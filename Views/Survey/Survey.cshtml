@@ -1,0 +1,27 @@
+﻿@model Survey
+@{
+    ViewData["Title"] = "Survey";
+}
+
+<h2>Favorite National Park Survey</h2>
+<p> Vote for your favorite park by submitting the form below. </p>
+
+<div>
+
+    <form asp-action="Survey" asp-controller="Survey" method="post">
+
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" name="Email" />
+        <br />
+        <label asp-for="State">State of Residence</label>
+        <input asp-for="State" name="State" />
+        <br />
+        <label asp-for="@Model.ActivityLevel">Activity Level</label>
+        <select asp-for="@Model.ActivityLevel" asp-items="@ViewBag.activityLevelList"></select>
+        <br />
+        <label asp-for="@Model.ParkCode">Park to Review</label>
+        <select asp-for="@Model.ParkCode" asp-items="@ViewBag.parkCodeList"></select>
+        <br />
+        <button type="submit">Submit</button>
+    </form>
+</div>

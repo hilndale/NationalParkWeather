@@ -1,0 +1,55 @@
+﻿@model DetailViewModel
+
+@{
+    ViewData["Title"] = "Detail";
+    TempData["code"] = Model.Park.Code;
+}
+
+<div id="detail-container">
+    <h2 id="grid-row-1">@Model.Park.Name</h2>
+    <p id="quote"> @Model.Park.Quote -@Model.Park.QuoteSource</p>
+
+    <img id="detail-image" src="~/images/parks/@(Model.Park.Code).jpg" />
+    <p id="grid-row-3">@Model.Park.Description</p>
+    <div id="park-detail">
+        <p> Entry Fee: $@Model.Park.EntryFee </p>
+        <p> State: @Model.Park.State</p>
+        <p> Elevation: @Model.Park.Elevation</p>
+        <p> Miles of Trail: @Model.Park.MilesOfTrail</p>
+        <p> Number of Campsites: @Model.Park.NumberOfCampsites</p>
+        <p> Climate: @Model.Park.Climate</p>
+        <p> Year Founded: @Model.Park.YearFounded</p>
+        <p> Annual Visitor Count: @Model.Park.AnnualVisitorCount</p>
+        <p> Acreage: @Model.Park.Acreage</p>
+        <p> Number of Animal Species: @Model.Park.NumberOfAnimalSpecies </p>
+    </div>
+
+    <form id="detail-button" asp-action="SaveSession" asp-controller="Home" method="get">
+        <input type="radio" asp-for="@Model.UnitOfTemp" value="fahrenheit" />Fahrenheit<br>
+        <input type="radio" asp-for="@Model.UnitOfTemp" value="celsius" />Celsius<br>
+        <input type="hidden" asp-for="@Model.Park.Code" />
+        <button type="submit">Convert</button>
+    </form>
+    
+    <div id="grid-row-6">
+        <div id="day-1-weather">
+            <img src="~/images/weather/@(Model.Weather[0].Forecast).png" />
+            Low Temp: @Model.Weather[0].LowTemp
+            High Temp: @Model.Weather[0].HighTemp
+            @Model.ForecastRecommendation
+            @Model.TemperatureRecommendation
+
+        </div>
+
+        @for (int i = 1; i < Model.Weather.Count; i++)
+        {
+            <div id="weather-days-1-4">
+                <img src="~/images/weather/@(Model.Weather[i].Forecast).png" />
+                Day @Model.Weather[i].Day
+                Low: @Model.Weather[i].LowTemp
+                High: @Model.Weather[i].HighTemp
+            </div>
+
+        }
+    </div>
+</div>

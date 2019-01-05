@@ -1,0 +1,19 @@
+﻿@model SurveyViewModel
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h2>Favorite National Park</h2>
+<p>How does your favorite park stack up against the rest?</p>
+
+<div id="result-container">
+    @foreach (FavoriteParks park in Model.Parks)
+    {
+        <div id="image-border">
+            <img id="result-image" src="~/images/parks/@(park.Code).jpg" />
+            <p>@park.Name</p>
+            <p>Total Votes: @park.Count</p>
+        </div>
+    }
+</div>

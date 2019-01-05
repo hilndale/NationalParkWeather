@@ -1,0 +1,25 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}=
+
+<h2>National Parks</h2>
+
+<div class="grid-container">
+    @foreach (Park park in Model.Parks)
+    {
+        <div id="grid-column-1">
+            <a asp-action="Detail" asp-controller="Home" asp-route-code="@(park.Code)" method="GET">
+                <img id="grid-item-1" src="~/images/parks/@(park.Code).jpg" />
+            </a>
+        </div>
+        <div id="grid-column-2">
+            <a id="grid-item-2" asp-action="Detail" asp-controller="Home" asp-route-code="@(park.Code)" method="GET">
+                <p>@park.Name</p>
+            </a>
+            <p id="grid-item-3">@park.Description</p>
+        </div>
+
+    }
+</div>
