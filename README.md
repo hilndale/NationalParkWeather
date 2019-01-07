@@ -1,6 +1,6 @@
 # NationalParkWeather
 
-Command line driven application that can be used to make campsite reservations at different campgrounds in several US National Parks.
+MVC application that allows user to view five day forecasts for various National Parks (Fahrenheit or Celsius) and submit a survey voting for their favorite park. 
 
 Prerequisites:
 
